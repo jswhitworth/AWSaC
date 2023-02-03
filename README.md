@@ -1,2 +1,3 @@
-# copsac
-cloud operations as code - better than orgFormation and landing zone
+# AWSaC
+
+AWS as code - better than landing zone or org-Formation
