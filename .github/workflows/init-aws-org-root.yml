@@ -23,7 +23,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY=$(jq -r '.inputs.AWS_SECRET_ACCESS_KEY' $GITHUB_EVENT_PATH)
           echo ::add-mask::$AWS_ACCESS_KEY_ID
           echo ::add-mask::$AWS_SECRET_ACCESS_KEY
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
