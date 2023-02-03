@@ -8,16 +8,23 @@ on:
       AWS_SECRET_ACCESS_KEY:
         description: aws secret access key for initial credentials of aws org root account
         required: true
+      AWS_REGION:
+        description: aws region for initial credentials of aws org root account
+        required: true
+        default: "us-east-1"
 jobs:
   init-aws-org-root:
     name: run initialization tasks on AWS org root account
     runs-on: ubuntu-latest
     steps:
-      # - name: Test masking inputs
-      #   id: add_mask
-      #   run: |
-      #     echo ::add-mask::$INP_SECRET
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ inputs.AWS_REGION }}
       - name: Print the inputs
         run: |
           echo AWS_ACCESS_KEY_ID is ${{ inputs.AWS_ACCESS_KEY_ID }}
           echo AWS_SECRET_ACCESS_KEY is ${{ inputs.AWS_SECRET_ACCESS_KEY }}
+          echo AWS_REGION is ${{ inputs.AWS_REGION }}
