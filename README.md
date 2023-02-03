@@ -20,6 +20,6 @@ Next, in the AWS console navigate to the root user security credentials page.
 
 Create a new root access key and save the access key ID and secret access key in a secure temporary location on your local computer.
 
-Execute the init-aws-org-root.yml workflow, replacing tmpID and tmpKey with the access key ID and secret access key created in the previous step:
+Execute the init-aws-org-root.yml workflow, using the access key ID and secret access key created in the previous step:
 
 ```gh workflow run init-aws-org-root.yml -f AWS_ACCESS_KEY_ID=*** -f AWS_SECRET_ACCESS_KEY="***"```
