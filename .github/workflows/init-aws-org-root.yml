@@ -1,7 +1,23 @@
 name: init-aws-org-root
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      AWS_ACCESS_KEY_ID:
+        description: aws access key id for initial credentials of aws org root account
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        description: aws secret access key for initial credentials of aws org root account
+        required: true
 jobs:
   init-aws-org-root:
     name: run initialization tasks on AWS org root account
     runs-on: ubuntu-latest
-    
+    steps:
+      # - name: Test masking inputs
+      #   id: add_mask
+      #   run: |
+      #     echo ::add-mask::$INP_SECRET
+      - name: Print the inputs
+        run: |
+          echo AWS_ACCESS_KEY_ID is ${{ inputs.AWS_ACCESS_KEY_ID }}
+          echo AWS_SECRET_ACCESS_KEY is ${{ inputs.AWS_SECRET_ACCESS_KEY }}
