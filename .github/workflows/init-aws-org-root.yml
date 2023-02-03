@@ -17,6 +17,13 @@ jobs:
     name: run initialization tasks on AWS org root account
     runs-on: ubuntu-latest
     steps:
+      - name: mask inputs
+        run: |
+          AWS_ACCESS_KEY_ID=$(jq -r '.inputs.AWS_ACCESS_KEY_ID' $GITHUB_EVENT_PATH)
+          AWS_SECRET_ACCESS_KEY=$(jq -r '.inputs.AWS_SECRET_ACCESS_KEY' $GITHUB_EVENT_PATH)
+          echo ::add-mask::$AWS_ACCESS_KEY_ID
+          echo ::add-mask::$AWS_SECRET_ACCESS_KEY
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
