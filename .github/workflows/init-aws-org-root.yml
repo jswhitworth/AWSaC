@@ -29,8 +29,6 @@ jobs:
           aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ inputs.AWS_REGION }}
-      - name: Print the inputs
+      - name: Configure root account aws to github oidc
         run: |
-          echo AWS_ACCESS_KEY_ID is ${{ inputs.AWS_ACCESS_KEY_ID }}
-          echo AWS_SECRET_ACCESS_KEY is ${{ inputs.AWS_SECRET_ACCESS_KEY }}
-          echo AWS_REGION is ${{ inputs.AWS_REGION }}
+          aws sts get-caller-identity
