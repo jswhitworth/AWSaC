@@ -1,0 +1,7 @@
+name: init-aws-org-root
+on: workflow_dispatch
+jobs:
+  init-aws-org-root:
+    name: run initialization tasks on AWS org root account
+    runs-on: ubuntu-latest
+    
